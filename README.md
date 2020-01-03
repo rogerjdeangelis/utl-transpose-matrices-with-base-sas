@@ -1,0 +1,75 @@
+# utl-transpose-matrices-with-base-sas
+Transpose a five by five matrix with base sas. Interchage tows and columns.
+    Transpose/Pivot a five by five matrix with base sas.  Interchange tows and columns.
+
+    Works with square and rectangular matrices.
+
+    github
+    https://tinyurl.com/w73vb3n
+    https://github.com/rogerjdeangelis/utl-transpose-matrices-with-base-sas
+
+    I was a little surprised how easy it is to transpose a matrix with base sas;
+
+    Sometimes I wish I was a naive SAS user, I know too much about complex transposes.
+
+    *_                   _
+    (_)_ __  _ __  _   _| |_
+    | | '_ \| '_ \| | | | __|
+    | | | | | |_) | |_| | |_
+    |_|_| |_| .__/ \__,_|\__|
+            |_|
+    ;
+
+    data have;
+     input v1-v5;
+    cards4;
+    1 1 1 1 1
+    2 2 2 2 2
+    3 3 3 3 3
+    4 4 4 4 4
+    5 5 5 5 5
+    ;;;;
+    run;quit;
+
+
+    WORK.HAVE total obs=5
+
+       V1    V2    V3    V4    V5
+
+        1     1     1     1     1
+        2     2     2     2     2
+        3     3     3     3     3
+        4     4     4     4     4
+        5     5     5     5     5
+
+    *            _               _
+      ___  _   _| |_ _ __  _   _| |_
+     / _ \| | | | __| '_ \| | | | __|
+    | (_) | |_| | |_| |_) | |_| | |_
+     \___/ \__,_|\__| .__/ \__,_|\__|
+                    |_|
+    ;
+
+    WORK.WANT total obs=5
+
+      V1    V2    V3    V4    V5
+
+       1     2     3     4     5
+       1     2     3     4     5
+       1     2     3     4     5
+       1     2     3     4     5
+       1     2     3     4     5
+
+
+    *          _       _   _
+     ___  ___ | |_   _| |_(_) ___  _ __
+    / __|/ _ \| | | | | __| |/ _ \| '_ \
+    \__ \ (_) | | |_| | |_| | (_) | | | |
+    |___/\___/|_|\__,_|\__|_|\___/|_| |_|
+
+    ;
+    proc transpose data=have out=want(rename=(col1-col5=v1-v5) drop=_name_);
+    run;quit;
+
+
+
